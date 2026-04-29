@@ -66,14 +66,15 @@
           </select>
         </label>
       </div>
-      <div class="card camera-card">
-        <h3>Camera Check</h3>
-        <div class="video-wrap">
+      <div class="card camera-card" id="cam-select-group" style="display:none">
+        <h3>Select Camera</h3>
+        <div id="cam-buttons" class="cam-buttons-row"></div>
+        <div class="video-wrap" style="margin-top:12px">
           <video id="setup-video" autoplay playsinline muted></video>
           <canvas id="setup-canvas"></canvas>
           <div id="face-indicator" class="face-badge face-no">No Face</div>
         </div>
-        <p class="tip">Sit 30–50 cm from camera · Good lighting · Keep still</p>
+        <p class="tip">Sit 30–50 cm from camera · Face the light · Keep still</p>
       </div>
       <button class="btn-primary" id="btn-setup" disabled>Start Baseline Recording →</button>
     </div>
