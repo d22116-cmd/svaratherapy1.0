@@ -803,3 +803,73 @@ input[type="range"] {
   .q-options    { grid-template-columns: 1fr; }
   .pacer-circle-container { width: 180px; height: 180px; }
 }
+
+/* ══════════════════════════════════════════════════════
+   CAMERA SELECTOR BUTTONS
+══════════════════════════════════════════════════════ */
+
+.cam-buttons-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.cam-btn {
+  flex: 1;
+  min-width: 130px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  text-align: left;
+}
+
+.cam-btn:hover {
+  border-color: var(--saffron);
+  background: var(--bg2);
+}
+
+.cam-btn.selected {
+  border-color: var(--saffron);
+  background: rgba(255,153,51,0.08);
+  box-shadow: 0 0 12px rgba(255,153,51,0.2);
+}
+
+.cam-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cam-label {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.cam-label small {
+  font-size: 0.62rem;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.cam-detecting {
+  font-size: 0.75rem;
+  color: var(--text3);
+  padding: 8px 0;
+}
+
+.cam-error {
+  font-size: 0.75rem;
+  color: var(--crimson);
+  padding: 8px 0;
+}
