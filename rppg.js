@@ -30,7 +30,8 @@ const EYE_EXCL_IDX = [33,7,163,144,145,153,154,155,133,173,157,158,159,160,161,2
   362,382,381,380,374,373,390,249,263,466,388,387,386,385,384,398];
 
 export class RPPGEngine {
-  constructor(videoEl, overlayCanvas, onMetrics, onPulse, onQuality) {
+  constructor(videoEl, overlayCanvas, onMetrics, onPulse, onQuality, deviceId = null) {
+    this.deviceId      = deviceId;    // specific camera deviceId
     this.video         = videoEl;
     this.canvas        = overlayCanvas;
     this.ctx           = overlayCanvas.getContext('2d');
@@ -77,6 +78,14 @@ export class RPPGEngine {
 
     this.faceMesh.onResults((r) => this._onResults(r));
 
+    // Open stream with specific device if provided
+    const videoConstraints = this.deviceId
+      ? { deviceId: { exact: this.deviceId }, width:640, height:480, frameRate:{ ideal:30 } }
+      : { width:640, height:480, frameRate:{ ideal:30 } };
+    const stream = await navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: false });
+    this.video.srcObject = stream;
+    await this.video.play();
+
     this.camera = new Camera(this.video, {
       onFrame: async () => {
         if (!this.running) return;
@@ -93,7 +102,14 @@ export class RPPGEngine {
   stop() {
     this.running = false;
     if (this.camera) this.camera.stop();
+    if (this.video && this.video.srcObject) {
+      this.video.srcObject.getTracks().forEach(t => t.stop());
+    }
   }
+
+
+
+
 
   _onResults(results) {
     this.totalFrames++;
