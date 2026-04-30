@@ -885,3 +885,23 @@ input[type="range"] {
   margin-top: 10px;
   line-height: 1.5;
 }
+
+/* ══════════════════════════════════════════════════════
+   EXPORT SECTION
+══════════════════════════════════════════════════════ */
+.export-section {
+  margin-top: 14px;
+}
+.export-title {
+  font-size: 0.72rem;
+  color: var(--text3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-top: 4px;
+}
+.export-section .btn-secondary {
+  margin-top: 8px;
+  text-align: left;
+  padding-left: 14px;
+}
