@@ -56,6 +56,15 @@
             <option value="control">Control (Normal Breathing)</option>
           </select>
         </label>
+        <label class="field-label">Recording Duration (Baseline & Post)
+          <select id="setup-duration">
+            <option value="">— Select —</option>
+            <option value="60">1 Minute (quick test)</option>
+            <option value="120">2 Minutes (recommended minimum)</option>
+            <option value="180" selected>3 Minutes (study protocol)</option>
+            <option value="300">5 Minutes (high accuracy)</option>
+          </select>
+        </label>
         <label class="field-label">Session Number
           <select id="setup-session">
             <option value="">— Select —</option>
@@ -232,8 +241,13 @@
         </table>
       </div>
       <div class="card interpretation" id="interpretation-card"></div>
-      <button class="btn-primary" id="btn-save">Save Session Data →</button>
-      <button class="btn-secondary" id="btn-export-csv">Export RR Intervals (CSV)</button>
+      <button class="btn-primary" id="btn-save">Save to Supabase →</button>
+      <div class="export-section">
+        <p class="export-title">📥 Export Data</p>
+        <button class="btn-secondary" id="btn-export-rr">RR Intervals — emWave Pro Compatible (.csv)</button>
+        <button class="btn-secondary" id="btn-export-hrv">Full HRV Feature Table (.csv)</button>
+        <button class="btn-secondary" id="btn-export-raw">Raw RGB Signal — for reanalysis (.csv)</button>
+      </div>
     </div>
   </div>
 
