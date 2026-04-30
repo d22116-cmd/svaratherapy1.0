@@ -323,6 +323,16 @@ export class RPPGEngine {
     };
   }
 
+  getRawRGB() {
+    // Returns array of {t, r, g, b} for offline reanalysis
+    return this.tRaw.map((t, i) => ({
+      t: Math.round(t * 10000) / 10000,
+      r: isFinite(this.rRaw[i]) ? Math.round(this.rRaw[i] * 100) / 100 : null,
+      g: isFinite(this.gRaw[i]) ? Math.round(this.gRaw[i] * 100) / 100 : null,
+      b: isFinite(this.bRaw[i]) ? Math.round(this.bRaw[i] * 100) / 100 : null,
+    })).filter(pt => pt.r !== null);
+  }
+
   reset() {
     this.rRaw=[]; this.gRaw=[]; this.bRaw=[]; this.tRaw=[];
     this.faceFoundFrames=0; this.totalFrames=0;
